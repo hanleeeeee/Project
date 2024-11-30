@@ -4,212 +4,154 @@
   The visibility of images is often compromised by low-light conditions, backlighting, and low contrast.  Techniques such as histogram equalization and near-infrared (NIR)-visible fusion are commonly employed to mitigate these challenges . However, histogram equalization frequently results in detail loss and oversaturation, while pairing images in NIR-visible fusion remains complex and error-prone.  This study presents a novel method to address these limitations effectively.  The proposed algorithm leverages CycleGAN to generate synthetic NIR images, blended twice with visible images, to achieve tone-compression effects, substantially minimizing detail loss and oversaturation . This innovative approach enhances image quality while overcoming the inherent drawbacks of traditional methods . The results demonstrate that images generated using our method outperform conventional algorithms in terms of quality. This advancement holds significant potential for applications in various domains, particularly self-driving vehicles and CCTV surveillance systems, where reliable image clarity is paramount.
 
 ## 2 Source Code
-Structure of Project
-Enhancing Low-light Images Using CycleGAN and Near-Infrared Dual Blending/
-│
-├── data/                                     # Contains information and instructions related to the Extended Yale B Dataset
-│   ├── datastructure.txt/                    # Information about the strucure of dataset (content and file order)
-│   └── instructions.txt/                     # instructions on how to download the dataset
-│
-├── doku/                                     # report
-│   └── B202400524_Lena_Lindauer_FacialRecognitionunderVaryingLightingConditionsusingSVM.pdf  # report of project submission
-│
-├── results/                                  # store results such as plots, metrics, etc.
-│   ├── classification_report.txt             # Accuracy, Precision, Recall, F1-score , Support
-│   ├── confusion_matrix.png                  # Confusion Matrix
-│   ├── memory_usage.png                      # Memory Usage (Training vs Prediction)
-│   ├── performance_metrices.png              # Accuracy, F1-score, Precision, Recall, Cross-Validation-Accuracy
-│   ├── scores.txt                            # Exact values of Accuracy, F1-Score, Precision, Recall, Cross-Validation Accuracy
-│   ├── speed.png                             # Speed in Training vs Prediction
-│   └── training_vs_prediction.png            # Overview Training vs Prediction
-│
-├── src/                                      # Source code for the project
-│   ├── required_libraries.txt                # list of used libraries
-│   ├── SVM_detailed_analysis.ipynb           # Extension for SVM Model that provides a detailed analysis and calculates all performance metrics
-│   ├── SVM_model.ipynb                       # SVM Model Implementation (Usage of Dataset, Training and Evaluation)
-│   └── SVM_model_AND_detailed_analysis.ipynb # Combination of previous .ipynb files 
+## Run & Test
 
-Explanation of Code
-1) SVM_model.ipynb
-Purpose
-Implements facial recognition using an SVM classifier on the Extended Yale B dataset.
+#### Structure of the project :
 
-Contents
-Library Imports
-Includes necessary libraries for image processing, machine learning, performance evaluation, and visualization
-Google Drive Mounting
-Provides an option to mount Google Drive to access the dataset
-Dataset Path Setup
-Defines the directory path for the Extended Yale B dataset
-Dataset Loading
-Processes images by converting to grayscale, resizing, and flattening into feature arrays
-Assigns labels based on folder names.
-Progress Tracking
-Displays dataset loading progress as a percentage
-Dataset Preparation
-Splits the data into training and testing sets
-SVM Model Initialization
-Configures an SVM with an RBF kernel and specific hyperparameters
-Memory Usage Function
-Tracks memory consumption during model training and prediction
-Performance Evaluation
-Measures training and testing time, accuracy, and memory usage
-Generates a classification report and a confusion matrix
-Visualizes results with bar plots and heatmaps
-2) SVM_detailed_analysis.ipynb
-Purpose
-Evaluates the performance of the SVM model with extended metrics and visualizations.
+* src
+  * train.py
+    * to train for transforming between NIR and RGB image
+  * test.py
+    * to test for transforming between NIR and RGB image
+  * datasets folder
+    * Where 3 versions of the dataset is present, called trainA, trainB and test
+    * trainA have RGB images, trainB have NIR images, test have RGB images for testing
+  * input folder
+    * Where 2 versions of the dataset is present, called near-infrared and visible dataset
+  * output folder
+    * where for result folder for main.py
+  * main.py
+    * Originally, **`test.py`** should be executed first to perform the necessary pre-processing before running **`main.py`**. However, since all the required settings have already been configured in the **`input`** folder, you can directly run **`main.py`** to check the post-processing results.
 
-Contents
-Library Imports
-Includes libraries for performance metrics, cross-validation, and visualization
-Evaluation Function
-evaluate_extended_performance
-Calculates model predictions on the test set
-Computes evaluation metrics
-Accuracy: Overall correctness of predictions
-F1-Score: Harmonic mean of precision and recall (weighted)
-Precision: Percentage of correctly identified positives
-Recall: Percentage of true positives identified
-Performs cross-validation to estimate the model's robustness
-Metric Visualization
-Creates a bar plot for metrics (accuracy, F1-score, precision, recall, and cross-validation accuracy)
-Performance Visualization Function
-visualize_performance_metrics
-Visualizes training and prediction times with bar plots
-Illustrates memory usage during training and prediction
-Usage
-Demonstrates the evaluation function to compute metrics for the SVM model
-Visualizes the computed metrics and performance measurements
-3) SVM_model_AND_detailed_analysis.ipynb
-Combines the functionalities of SVM_model.ipynb and SVM_detailed_analysis.ipynb, enabling both model training and detailed performance evaluation. Note that executing this file is time-intensive due to the dataset size and the extensive computations required for training and assessment.
+* train.py
+- purpose
+generating module for generating fake nir image and fake visible image
 
-Remarks:
-Google Account is required in order to use Colab
-Listed source code is uploaded as .ipynb file
-Dataset needs to be downloaded and uploaded to Google Drive to use given source code (ref. Installation and Usage)
-Loading the dataset and training the SVM Model takes a lot of time (approx 10-20 minutes each)
-calculation of performance assessments takes a lot of time
-3 Performance Metrices
-Accuracy: 99.94%
+* test.py
+- purpose
+generate NIR-image from visible image
 
-F1-Score: 1.00
+* main.py
+- purpose
+fusion with fake NIR-image and RGB(visible) image
 
-Precision: 1.00
+* folders
+- purpose
+input, output : for implementing main.py 
+datasets: for train.py and test.py
+result: for storing images from test.py 
 
-Recall: 1.00
+#### Prerequisites
 
-Cross-Validation Accuracy: 99.83%
+Start by cloning the project on your machine
 
-performance_metrices
+```
+git clone 
+```
+You will need a recent version of Python 3.8 with multiple dependencies :
 
-Cohen's Kappa: 1.00
+* torch>=1.4.0
+* torchvision>=0.5.0
+* dominate>=2.4.0
+* visdom>=0.1.8.8
+* Torch
+* CUDA toolkit (If using Nvidia GPU)
 
-Classification Report:
+  * try `nvcc --version` in a terminal to ensure that CUDA toolkit is installed
+  * also try running `torch.cuda.is_available()` to ensure it is available, and thus ensure maximum possible speed on your Nvidia GPU
 
-            precision  recall  f1-score   support
+  ```python
+  >>> import torch
+  >>> torch.cuda.is_available()
+  True
+  ```
 
-    11       1.00      1.00      1.00       111
-    12       1.00      1.00      1.00       115
-    13       1.00      1.00      1.00       114
-    15       1.00      1.00      1.00       110
-    16       1.00      1.00      1.00       115
-    17       0.99      1.00      1.00       109
-    18       1.00      0.99      1.00       111
-    19       1.00      1.00      1.00       119
-    20       1.00      1.00      1.00       151
-    21       1.00      1.00      1.00       122
-    22       1.00      1.00      1.00       129
-    23       1.00      1.00      1.00       108
-    24       1.00      1.00      1.00       122
-    25       1.00      1.00      1.00       111
-    26       1.00      1.00      1.00       126
-    27       1.00      1.00      1.00       113
-    28       1.00      1.00      1.00       110
-    29       1.00      1.00      1.00       120
-    30       1.00      1.00      1.00       110
-    31       1.00      1.00      1.00       114
-    32       1.00      1.00      1.00       103
-    33       1.00      1.00      1.00       114
-    34       1.00      1.00      1.00       128
-    35       1.00      1.00      1.00       108
-    36       0.99      1.00      1.00       127
-    37       1.00      0.99      1.00       123
-    38       1.00      1.00      1.00       120
-    39       1.00      1.00      1.00       115
 
-accuracy                        1.00      3278
-macro avg    1.00      1.00     1.00      3278
-weighted avg 1.00      1.00     1.00      3278
-Confusion Matrix:
+## 3 Performance Metrics
+### results and compare
+![ex1_result](https://github.com/user-attachments/assets/66b32406-89fc-4d08-a159-aa94e91a3703)
+![ex2_result](https://github.com/user-attachments/assets/caa7a44c-4c07-44e9-bafa-6bd15cc31efb)
+![ex3_result](https://github.com/user-attachments/assets/cfee4b41-57d0-45a1-b424-d7d51b4a4f26)
 
-image
+### performance Metrics
 
-Speed:
-image
 
-Memory Usage:
-image
 
-Training vs Prediction: training_vs_prediction
-4 Installation and Usage
-This project has been implemented using Google Colab, with the Extended Yale B dataset. The size of the dataset is too large to upload and include it in this project, therefore instructions will be given on how to download and use it will be provided in the following. The Extended Yale B dataset is distributed as a free resource for academic and research use and can therefore be downloaded from its official website.
 
-Steps:
-Download the dataset from Extended Yale B Dataset Link: https://academictorrents.com/details/06e479f338b56fa5948c40287b66f68236a14612 or use https://drive.google.com/drive/folders/1wqWJRha3enpuQk5uNM32fZ6BgM2kwvoa?usp=drive_link
-Extract the contents and upload them to Google Drive.
-Mount Google Drive in Colab
-from google.colab import drive
-drive.mount('/content/drive')
-Specify the dataset path:
-dataset_path = '/content/drive/My Drive/ExtendedYaleB'
-Run the provided scripts
-SVM_detailed_analysis.ipynb
-SVM_model.ipynb
-SVM_model_AND_detailed_analysis.ipynb
+
+
+
+## 4 Installation and Usage
+This project has been implemented using own GPU. The size of the dataset is too large to upload and include it in this project, therefore instructions will be given on how to download and use it will be provided in the following. NIR dataset url: https://www.epfl.ch/labs/ivrl/research/downloads/rgb-nir-scene-dataset/  RGB(visible) dataset url :https://github.com/cs-chan/Exclusively-Dark-Image-Dataset
+
+### train steps:
+Download the dataset from above URL and then store each of images to "./datasets/trainA" , "./datasets/trainB"
+run train.py
+
+### test steps:
+test.py
+move results components to input near-infrared folder(./results/images->./input/near-infrared)
+extract extra RGB images from RGB(visible) here-> url :https://github.com/cs-chan/
+main.py
 Evaluate performance based on displayed metrics and visualizations
-5 References and Documentation
+
+## 5 References and Documentation
 References
-Georghiades, A. S., Belhumeur, P. N., & Kriegman, D. J. (2001). "From Few to Many: Illumination Cone Models for Face Recognition under Variable Lighting and Pose." IEEE Transactions on Pattern Analysis and Machine Intelligence, 23(6), 643–660.
-DOI: 10.1109/34.927464
+J.-Y. Zhu, T. Park, P. Isola, and A. A. Efros, "Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks," in Proc. IEEE Int. Conf. Comput. Vis. (ICCV), 2017, pp. 2242–2251. https://arxiv.org/abs/1703.10593
 
-Guo, G., Li, S. Z., & Chan, K. L. (2001). "Support vector machines for face recognition." Image and Vision Computing, 19(9), 631–638.
-DOI: 10.1016/S0262-8856(01)00046-4
+Y. Wang, A. Mousavian, Y. Xiang, and D. Fox, "DenseFusion: 6D Object Pose Estimation by Iterative Dense Fusion," in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR), 2019, pp. 3343–3352. https://arxiv.org/abs/1901.04780
 
-Phillips, P. (1998). "Support Vector Machines Applied to Face Recognition." Advances in Neural Information Processing Systems, 11. MIT Press.
-Paper Link
+A. Vanmali, S. Raval, P. Borse, and S. Chaudhuri, "NIR-Visible Image Fusion for Enhancing Visibility," IEEE Trans. Comput. Imaging, vol. 5, no. 4, pp. 539–551, Dec. 2019. https://doi.org/10.1109/TCI.2019.2919999
 
-Rana, W., et al. (2022). "Face Recognition in Different Light Conditions." SpringerLink.
-DOI: 10.1007/springerlink12345
+E. Reinhard, M. Ashikhmin, B. Gooch, and P. Shirley, "Color Transfer between Images," IEEE Comput. Graph. Appl., vol. 21, no. 5, pp. 34–41, Sep.-Oct. 2001. https://doi.org/10.1109/38.946629
 
-Zhang, L., et al. (2008). "Face Recognition Using Scale Invariant Feature Transform and Support Vector Machine." In: 2008 The 9th International Conference for Young Computer Scientists, 1766–1770.
-DOI: 10.1109/ICYCS.2008.481
+G. M. Johnson and M. D. Fairchild, "iCAM06: A Refined Image Appearance Model for HDR Image Rendering," J. Vis. Commun. Image Represent., vol. 18, no. 5, pp. 406–414, Oct. 2007. https://doi.org/10.1016/j.jvcir.2006.11.002
 
-Explanation of Key Algorithm (Support Vector Machine SVM)
-A Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification tasks. It works by finding the optimal hyperplane that separates data into different classes, maximizing the margin between the hyperplane and the closest data points, known as support vectors. The SVM can handle both linear and non-linear classification problems. For non-linear data, SVM uses a kernel trick to map the data into a higher-dimensional space where a linear separation is possible. Common kernels include the Radial Basis Function (RBF) kernel, which allows for flexible decision boundaries.
+L. Xu, Q. Yan, Y. Xia, and J. Jia, "Image Smoothing via L0 Gradient Minimization," ACM Trans. Graph., vol. 30, no. 6, Dec. 2011. https://doi.org/10.1145/2070781.2024176
 
-The key parameters in SVM are C and gamma. The parameter C controls the trade-off between maximizing the margin and minimizing classification errors, while gamma defines the influence of individual data points. SVM is effective in high-dimensional spaces and is known for its ability to generalize well, but it can be computationally expensive and requires careful tuning of parameters to achieve optimal performance.
+C. Wei, W. Wang, W. Yang, and J. Liu, "RetinexNet: Deep Retinex Decomposition for Low-Light Enhancement," in Proc. BMVC, 2018, pp. 1–12. https://arxiv.org/abs/1808.04560
 
-6 Issues and Contributions
-One of the primary challenges observed in this project is the model's limited generalization to extreme lighting conditions. While the SVM performs well under most scenarios, it struggles when faced with very bright or heavily shadowed images, where facial features become significantly obscured or distorted. Another limitation is the relatively small size of the Extended Yale B dataset, which, despite its controlled lighting variations, does not capture real-world complexities such as facial expressions, occlusions, or diverse backgrounds. The scalability of the model is another concern. SVMs are computationally intensive, especially when handling larger datasets, due to their quadratic training complexity. This may pose challenges for scaling the project to datasets with a significantly higher number of samples. Additionally, the model’s accuracy depends heavily on preprocessing steps such as resizing and grayscale conversion. Any inconsistencies or errors during these steps can negatively impact performance. Although the Extended Yale B dataset is not very large, the time required to load and preprocess the data, as well as to train the SVM model, is significant—taking approximately 30 minutes in some cases. This highlights the need for more efficient data handling and processing strategies.
 
-Contributions:
+**Explanation of Key Algorithm (Support Fusion)**  
 
-Optimization of Data Loading and Preprocessing:
-Efforts were made to streamline the loading and preprocessing of the Extended Yale B dataset to reduce runtime without sacrificing data quality. This included experimenting with optimized file handling techniques and reducing redundancy in preprocessing steps
-Runtime Enhancements:
-Adjustments were implemented to improve the efficiency of the training process. This included tuning SVM hyperparameters and using parallel processing where possible to speed up computations
-Evaluation of Alternative Models:
-The project incorporated a framework to test and compare the performance of different machine learning algorithms, such as k-Nearest Neighbors (k-NN) and Random Forest, against SVM. This provided insights into alternative approaches to address scalability and runtime issues
-Model Scalability Exploration:
-Experiments were conducted to explore the performance of the SVM model when trained on subsets of larger datasets, enabling an assessment of its scalability potential
-Integration of Advanced Preprocessing Techniques:
-Advanced preprocessing methods, such as histogram equalization and contrast adjustment, were explored to improve the robustness of the model under extreme lighting conditions
-Benchmarking Against Real-World Datasets:
-A plan was developed to benchmark the current implementation against larger, real-world datasets to identify further areas for improvement and validate the model’s performance in more diverse scenarios
-7 Future work
-To build on the current project, several potential improvements can be explored. One promising direction is the incorporation of neural networks, particularly Convolutional Neural Networks (CNNs), which can provide superior performance on larger and more diverse datasets by learning hierarchical feature representations. Data augmentation is another avenue worth pursuing, as it can enrich the dataset with synthetic variations, including different lighting angles, occlusions, and facial expressions, to improve the model’s robustness.
+I executed CycleGAN training both in an unpaired and paired sequential manner, enabling extensive learning to generate NIR images from general RGB images. Subsequently, I created a sharp image by fusing the generated fake NIR image with the real visible image. The key algorithms used in this process include alpha blending, gamma correction, CLAHE, and color compensation.
 
-Future iterations of this project could also focus on enabling real-time facial recognition by integrating a webcam or camera feed. This would require optimizing the SVM implementation or exploring alternative algorithms better suited for real-time performance. Another area for enhancement is the combination of SVM with feature extraction techniques such as Principal Component Analysis (PCA) or Histogram of Oriented Gradients (HOG), which could boost both accuracy and speed.
+## 6 Issues and Contributions
+### Issues:
 
-Finally, cross-domain testing on other datasets would help evaluate the model's ability to generalize beyond the Extended Yale B dataset. Adding explainability tools to visualize the SVM decision boundaries could also provide valuable insights into the model's behavior, increasing its interpretability and trustworthiness.
+#### Data Quality and Variability:
+One of the challenges encountered during the project was the variability in the quality of input data. The performance of the algorithms, particularly in generating NIR images from RGB inputs, was sometimes affected by noise or inconsistencies in the data. Future work could involve using more controlled datasets or enhancing the data preprocessing pipeline to minimize such issues.
+
+#### Computational Complexity:
+The training of CycleGAN on large datasets, especially when running in a paired and unpaired sequential manner, was computationally expensive and time-consuming. Although the results were promising, there were limitations in processing speed. Optimizing the model for faster training or exploring alternative architectures might help improve efficiency.
+
+#### Fusion Artifacts:
+When blending the generated fake NIR images with the real visible images, there were occasional artifacts that impacted the image quality. The fusion process, although successful in many cases, sometimes resulted in color inconsistencies or visible seams in the final image. Further refinement of the blending techniques, such as enhancing the alpha blending process or experimenting with different fusion algorithms, could address this issue.
+
+### Contributions:
+
+#### Innovative Approach for NIR-Visible Fusion:
+The primary contribution of this project lies in the innovative use of CycleGAN for generating NIR images from RGB inputs, followed by a novel fusion process with real visible images to enhance image clarity. This method provides a new pathway for improving image quality in challenging environments, such as low-light or infrared imaging.
+
+#### Application of Advanced Image Processing Techniques:
+This project successfully integrated advanced image processing techniques like gamma correction, CLAHE, and color compensation, which significantly improved the final output. These algorithms played a crucial role in enhancing the contrast, brightness, and overall visual quality of the fused images.
+
+#### Framework for Low-Light Image Enhancement:
+The project contributes to the field of low-light image enhancement by proposing a framework that combines deep learning-based NIR generation with traditional image enhancement techniques. This hybrid approach offers a promising solution for applications where visibility enhancement in difficult lighting conditions is essential.
+
+#### Potential for Further Development and Optimization:
+The project sets the stage for future improvements and optimizations. The algorithms used can be further tuned for better performance, and the fusion techniques can be expanded to handle more complex image types or to improve real-time performance. Additionally, the methodology can be applied to other areas such as medical imaging, remote sensing, and surveillance.
+
+## 7 Future work
+
+
+### 1. Optimization of Computational Efficiency:
+   One of the key areas for improvement is the optimization of the training process for CycleGAN. The current model requires significant computational resources and time, especially when processing large datasets. Future work could involve investigating more efficient architectures or utilizing techniques like model pruning or knowledge distillation to speed up the training process without compromising on performance.
+
+### 2. Improvement of Fusion Quality:
+   While the fusion of fake NIR images with real visible images showed promising results, there are still occasional artifacts and color inconsistencies. Exploring advanced fusion techniques, such as multi-scale fusion or deep learning-based fusion methods, could further improve the visual quality of the final images. Additionally, more sophisticated methods for handling the alpha blending process could lead to smoother transitions between the NIR and visible images.
+
+
+### 3. **Real-Time Implementation:**  
+   One potential direction for future development is the implementation of this fusion system in real-time applications. Optimizing the model for real-time image enhancement, particularly for use in systems like autonomous vehicles or surveillance, would be valuable. Real-time processing would require both model optimization and hardware acceleration, such as using GPUs or edge computing devices.
+
