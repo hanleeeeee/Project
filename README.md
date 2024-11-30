@@ -35,6 +35,7 @@
     * datasets: for train.py and test.py
     *result: for storing images from test.py 
       *generate NIR-image from visible image 
+![image](https://github.com/user-attachments/assets/bda256c0-16df-4eb9-a963-124accb87c39)
 
 
 #### Prerequisites
@@ -57,8 +58,8 @@ You will need a recent version of Python 3.8 with multiple dependencies :
   * also try running `torch.cuda.is_available()` to ensure it is available, and thus ensure maximum possible speed on your Nvidia GPU
 
   ```python
-  >>> import torch
-  >>> torch.cuda.is_available()
+  import torch
+  torch.cuda.is_available()
   True
   ```
 
@@ -70,6 +71,12 @@ You will need a recent version of Python 3.8 with multiple dependencies :
 ![ex3_result](https://github.com/user-attachments/assets/cfee4b41-57d0-45a1-b424-d7d51b4a4f26)
 
 ### performance Metrics
+![image](https://github.com/user-attachments/assets/9b8b33cc-258a-4669-bd54-ffeb5ebcc402)
+![image](https://github.com/user-attachments/assets/6cfcd562-aa78-4259-ab4c-9eaa0fb90902)
+![image](https://github.com/user-attachments/assets/5137c5ee-c646-42ab-b1a8-e61e420d81cc)
+![image](https://github.com/user-attachments/assets/1ab97378-9334-49e8-abc1-3031eb84edf7)
+![image](https://github.com/user-attachments/assets/acc1dec1-4c3c-47e9-a72e-ae26c988355f)
+![image](https://github.com/user-attachments/assets/94220663-84bf-4cbd-ae14-49c7691f1374)
 
 
 
