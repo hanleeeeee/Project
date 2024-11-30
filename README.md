@@ -8,6 +8,7 @@
 
 #### Structure of the project :
 
+<<<<<<< HEAD
 
     
 * src
@@ -24,6 +25,36 @@
     * where for result folder for main.py
   * main.py
     * Originally, **`test.py`** should be executed first to perform the necessary pre-processing before running **`main.py`**. However, since all the required settings have already been configured in the **`input`** folder, you can directly run **`main.py`** to check the post-processing results.
+=======
+* src
+  * train.py
+    * to train for transforming between NIR and RGB image
+  * test.py
+    * to test for transforming between NIR and RGB image
+  * datasets folder
+    * Where 3 versions of the dataset is present, called trainA, trainB and test
+    * trainA have RGB images, trainB have NIR images, test have RGB images for testing
+  * input folder
+    * Where 2 versions of the dataset is present, called near-infrared and visible dataset
+  * output folder
+    * where for result folder for main.py
+  * main.py
+    * Originally, **`test.py`** should be executed first to perform the necessary pre-processing before running **`main.py`**. However, since all the required settings have already been configured in the **`input`** folder, you can directly run **`main.py`** to check the post-processing results.
+
+#### file and folder explanation :
+* train.py
+    * purpose
+      *generate NIR-image from visible image 
+* test.py
+   * purpose
+      *generate NIR-image from visible image 
+* folders
+    * input, output: for implementing main.py
+    * datasets: for train.py and test.py
+    *result: for storing images from test.py 
+      *generate NIR-image from visible image 
+![image](https://github.com/user-attachments/assets/bda256c0-16df-4eb9-a963-124accb87c39)
+>>>>>>> e2f6dbec8112904dfc4f1e3762f66f2c5c46bd6a
 
 
 #### Prerequisites
@@ -46,20 +77,56 @@ You will need a recent version of Python 3.8 with multiple dependencies :
   * also try running `torch.cuda.is_available()` to ensure it is available, and thus ensure maximum possible speed on your Nvidia GPU
 
   ```python
+<<<<<<< HEAD
   >>> import torch
   >>> torch.cuda.is_available()
+=======
+  import torch
+  torch.cuda.is_available()
+>>>>>>> e2f6dbec8112904dfc4f1e3762f66f2c5c46bd6a
   True
   ```
 
 
+<<<<<<< HEAD
 ## 3 Performance Metrices
 
 
 
+=======
+## 3 Performance Metrics
+### results and compare
+#### ex1
+![ex1_result](https://github.com/user-attachments/assets/66b32406-89fc-4d08-a159-aa94e91a3703)
+#### ex2
+![ex2_result](https://github.com/user-attachments/assets/caa7a44c-4c07-44e9-bafa-6bd15cc31efb)
+#### ex3
+![ex3_result](https://github.com/user-attachments/assets/cfee4b41-57d0-45a1-b424-d7d51b4a4f26)
+
+### performance Metrics
+#### sharpening
+![image](https://github.com/user-attachments/assets/9b8b33cc-258a-4669-bd54-ffeb5ebcc402)
+![image](https://github.com/user-attachments/assets/6cfcd562-aa78-4259-ab4c-9eaa0fb90902)
+#### restoration, compression
+![image](https://github.com/user-attachments/assets/5137c5ee-c646-42ab-b1a8-e61e420d81cc)
+![image](https://github.com/user-attachments/assets/1ab97378-9334-49e8-abc1-3031eb84edf7)
+
+#### deplearning image quality
+![image](https://github.com/user-attachments/assets/acc1dec1-4c3c-47e9-a72e-ae26c988355f)
+![image](https://github.com/user-attachments/assets/94220663-84bf-4cbd-ae14-49c7691f1374)
+
+#### table
+![image](https://github.com/user-attachments/assets/325d5419-490a-4878-ae08-89ecec700e5a)
+>>>>>>> e2f6dbec8112904dfc4f1e3762f66f2c5c46bd6a
 
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e2f6dbec8112904dfc4f1e3762f66f2c5c46bd6a
 ## 4 Installation and Usage
 This project has been implemented using own GPU. The size of the dataset is too large to upload and include it in this project, therefore instructions will be given on how to download and use it will be provided in the following. NIR dataset url: https://www.epfl.ch/labs/ivrl/research/downloads/rgb-nir-scene-dataset/  RGB(visible) dataset url :https://github.com/cs-chan/Exclusively-Dark-Image-Dataset
 
@@ -85,37 +152,69 @@ A. Vanmali, S. Raval, P. Borse, and S. Chaudhuri, "NIR-Visible Image Fusion for 
 E. Reinhard, M. Ashikhmin, B. Gooch, and P. Shirley, "Color Transfer between Images," IEEE Comput. Graph. Appl., vol. 21, no. 5, pp. 34–41, Sep.-Oct. 2001. https://doi.org/10.1109/38.946629
 
 G. M. Johnson and M. D. Fairchild, "iCAM06: A Refined Image Appearance Model for HDR Image Rendering," J. Vis. Commun. Image Represent., vol. 18, no. 5, pp. 406–414, Oct. 2007. https://doi.org/10.1016/j.jvcir.2006.11.002
+<<<<<<< HEAD
+
+L. Xu, Q. Yan, Y. Xia, and J. Jia, "Image Smoothing via L0 Gradient Minimization," ACM Trans. Graph., vol. 30, no. 6, Dec. 2011. https://doi.org/10.1145/2070781.2024176
+
+C. Wei, W. Wang, W. Yang, and J. Liu, "RetinexNet: Deep Retinex Decomposition for Low-Light Enhancement," in Proc. BMVC, 2018, pp. 1–12. https://arxiv.org/abs/1808.04560
+=======
+>>>>>>> e2f6dbec8112904dfc4f1e3762f66f2c5c46bd6a
 
 L. Xu, Q. Yan, Y. Xia, and J. Jia, "Image Smoothing via L0 Gradient Minimization," ACM Trans. Graph., vol. 30, no. 6, Dec. 2011. https://doi.org/10.1145/2070781.2024176
 
 C. Wei, W. Wang, W. Yang, and J. Liu, "RetinexNet: Deep Retinex Decomposition for Low-Light Enhancement," in Proc. BMVC, 2018, pp. 1–12. https://arxiv.org/abs/1808.04560
 
-Explanation of Key Algorithm (Support Vector Machine SVM)
-A Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification tasks. It works by finding the optimal hyperplane that separates data into different classes, maximizing the margin between the hyperplane and the closest data points, known as support vectors. The SVM can handle both linear and non-linear classification problems. For non-linear data, SVM uses a kernel trick to map the data into a higher-dimensional space where a linear separation is possible. Common kernels include the Radial Basis Function (RBF) kernel, which allows for flexible decision boundaries.
-
-The key parameters in SVM are C and gamma. The parameter C controls the trade-off between maximizing the margin and minimizing classification errors, while gamma defines the influence of individual data points. SVM is effective in high-dimensional spaces and is known for its ability to generalize well, but it can be computationally expensive and requires careful tuning of parameters to achieve optimal performance.
-
+<<<<<<< HEAD
 ## 6 Issues and Contributions
 One of the primary challenges observed in this project is the model's limited generalization to extreme lighting conditions. While the SVM performs well under most scenarios, it struggles when faced with very bright or heavily shadowed images, where facial features become significantly obscured or distorted. Another limitation is the relatively small size of the Extended Yale B dataset, which, despite its controlled lighting variations, does not capture real-world complexities such as facial expressions, occlusions, or diverse backgrounds. The scalability of the model is another concern. SVMs are computationally intensive, especially when handling larger datasets, due to their quadratic training complexity. This may pose challenges for scaling the project to datasets with a significantly higher number of samples. Additionally, the model’s accuracy depends heavily on preprocessing steps such as resizing and grayscale conversion. Any inconsistencies or errors during these steps can negatively impact performance. Although the Extended Yale B dataset is not very large, the time required to load and preprocess the data, as well as to train the SVM model, is significant—taking approximately 30 minutes in some cases. This highlights the need for more efficient data handling and processing strategies.
+=======
+>>>>>>> e2f6dbec8112904dfc4f1e3762f66f2c5c46bd6a
 
-Contributions:
+**Explanation of Key Algorithm (Support Fusion)**  
 
-Optimization of Data Loading and Preprocessing:
-Efforts were made to streamline the loading and preprocessing of the Extended Yale B dataset to reduce runtime without sacrificing data quality. This included experimenting with optimized file handling techniques and reducing redundancy in preprocessing steps
-Runtime Enhancements:
-Adjustments were implemented to improve the efficiency of the training process. This included tuning SVM hyperparameters and using parallel processing where possible to speed up computations
-Evaluation of Alternative Models:
-The project incorporated a framework to test and compare the performance of different machine learning algorithms, such as k-Nearest Neighbors (k-NN) and Random Forest, against SVM. This provided insights into alternative approaches to address scalability and runtime issues
-Model Scalability Exploration:
-Experiments were conducted to explore the performance of the SVM model when trained on subsets of larger datasets, enabling an assessment of its scalability potential
-Integration of Advanced Preprocessing Techniques:
-Advanced preprocessing methods, such as histogram equalization and contrast adjustment, were explored to improve the robustness of the model under extreme lighting conditions
-Benchmarking Against Real-World Datasets:
-A plan was developed to benchmark the current implementation against larger, real-world datasets to identify further areas for improvement and validate the model’s performance in more diverse scenarios
-7 Future work
-To build on the current project, several potential improvements can be explored. One promising direction is the incorporation of neural networks, particularly Convolutional Neural Networks (CNNs), which can provide superior performance on larger and more diverse datasets by learning hierarchical feature representations. Data augmentation is another avenue worth pursuing, as it can enrich the dataset with synthetic variations, including different lighting angles, occlusions, and facial expressions, to improve the model’s robustness.
+I executed CycleGAN training both in an unpaired and paired sequential manner, enabling extensive learning to generate NIR images from general RGB images. Subsequently, I created a sharp image by fusing the generated fake NIR image with the real visible image. The key algorithms used in this process include alpha blending, gamma correction, CLAHE, and color compensation.
 
-Future iterations of this project could also focus on enabling real-time facial recognition by integrating a webcam or camera feed. This would require optimizing the SVM implementation or exploring alternative algorithms better suited for real-time performance. Another area for enhancement is the combination of SVM with feature extraction techniques such as Principal Component Analysis (PCA) or Histogram of Oriented Gradients (HOG), which could boost both accuracy and speed.
+## 6 Issues and Contributions
+### Issues:
 
+#### Data Quality and Variability:
+One of the challenges encountered during the project was the variability in the quality of input data. The performance of the algorithms, particularly in generating NIR images from RGB inputs, was sometimes affected by noise or inconsistencies in the data. Future work could involve using more controlled datasets or enhancing the data preprocessing pipeline to minimize such issues.
+
+#### Computational Complexity:
+The training of CycleGAN on large datasets, especially when running in a paired and unpaired sequential manner, was computationally expensive and time-consuming. Although the results were promising, there were limitations in processing speed. Optimizing the model for faster training or exploring alternative architectures might help improve efficiency.
+
+#### Fusion Artifacts:
+When blending the generated fake NIR images with the real visible images, there were occasional artifacts that impacted the image quality. The fusion process, although successful in many cases, sometimes resulted in color inconsistencies or visible seams in the final image. Further refinement of the blending techniques, such as enhancing the alpha blending process or experimenting with different fusion algorithms, could address this issue.
+
+### Contributions:
+
+#### Innovative Approach for NIR-Visible Fusion:
+The primary contribution of this project lies in the innovative use of CycleGAN for generating NIR images from RGB inputs, followed by a novel fusion process with real visible images to enhance image clarity. This method provides a new pathway for improving image quality in challenging environments, such as low-light or infrared imaging.
+
+#### Application of Advanced Image Processing Techniques:
+This project successfully integrated advanced image processing techniques like gamma correction, CLAHE, and color compensation, which significantly improved the final output. These algorithms played a crucial role in enhancing the contrast, brightness, and overall visual quality of the fused images.
+
+#### Framework for Low-Light Image Enhancement:
+The project contributes to the field of low-light image enhancement by proposing a framework that combines deep learning-based NIR generation with traditional image enhancement techniques. This hybrid approach offers a promising solution for applications where visibility enhancement in difficult lighting conditions is essential.
+
+#### Potential for Further Development and Optimization:
+The project sets the stage for future improvements and optimizations. The algorithms used can be further tuned for better performance, and the fusion techniques can be expanded to handle more complex image types or to improve real-time performance. Additionally, the methodology can be applied to other areas such as medical imaging, remote sensing, and surveillance.
+
+## 7 Future work
+
+
+### 1. Optimization of Computational Efficiency:
+   One of the key areas for improvement is the optimization of the training process for CycleGAN. The current model requires significant computational resources and time, especially when processing large datasets. Future work could involve investigating more efficient architectures or utilizing techniques like model pruning or knowledge distillation to speed up the training process without compromising on performance.
+
+### 2. Improvement of Fusion Quality:
+   While the fusion of fake NIR images with real visible images showed promising results, there are still occasional artifacts and color inconsistencies. Exploring advanced fusion techniques, such as multi-scale fusion or deep learning-based fusion methods, could further improve the visual quality of the final images. Additionally, more sophisticated methods for handling the alpha blending process could lead to smoother transitions between the NIR and visible images.
+
+
+### 3. **Real-Time Implementation:**  
+   One potential direction for future development is the implementation of this fusion system in real-time applications. Optimizing the model for real-time image enhancement, particularly for use in systems like autonomous vehicles or surveillance, would be valuable. Real-time processing would require both model optimization and hardware acceleration, such as using GPUs or edge computing devices.
+
+<<<<<<< HEAD
 Finally, cross-domain testing on other datasets would help evaluate the model's ability to generalize beyond the Extended Yale B dataset. Adding explainability tools to visualize the SVM decision boundaries could also provide valuable insights into the model's behavior, increasing its interpretability and trustworthiness.
 "# Enhancing-Low-light-Images-Using-CycleGAN-and-Near-Infrared-Dual-Blending" 
+=======
+>>>>>>> e2f6dbec8112904dfc4f1e3762f66f2c5c46bd6a
