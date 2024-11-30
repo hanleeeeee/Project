@@ -66,18 +66,27 @@ You will need a recent version of Python 3.8 with multiple dependencies :
 
 ## 3 Performance Metrics
 ### results and compare
+#### ex1
 ![ex1_result](https://github.com/user-attachments/assets/66b32406-89fc-4d08-a159-aa94e91a3703)
+#### ex2
 ![ex2_result](https://github.com/user-attachments/assets/caa7a44c-4c07-44e9-bafa-6bd15cc31efb)
+#### ex3
 ![ex3_result](https://github.com/user-attachments/assets/cfee4b41-57d0-45a1-b424-d7d51b4a4f26)
 
 ### performance Metrics
+#### sharpening
 ![image](https://github.com/user-attachments/assets/9b8b33cc-258a-4669-bd54-ffeb5ebcc402)
 ![image](https://github.com/user-attachments/assets/6cfcd562-aa78-4259-ab4c-9eaa0fb90902)
+#### restoration, compression
 ![image](https://github.com/user-attachments/assets/5137c5ee-c646-42ab-b1a8-e61e420d81cc)
 ![image](https://github.com/user-attachments/assets/1ab97378-9334-49e8-abc1-3031eb84edf7)
+
+#### deplearning image quality
 ![image](https://github.com/user-attachments/assets/acc1dec1-4c3c-47e9-a72e-ae26c988355f)
 ![image](https://github.com/user-attachments/assets/94220663-84bf-4cbd-ae14-49c7691f1374)
 
+#### table
+![image](https://github.com/user-attachments/assets/325d5419-490a-4878-ae08-89ecec700e5a)
 
 
 
