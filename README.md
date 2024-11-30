@@ -1,37 +1,11 @@
-: The visibility of images is often compromised by low-light conditions, backlighting, and low contrast.  Techniques such as histogram equalization and near-infrared (NIR)-visible fusion are commonly employed to mitigate these challenges . However, histogram equalization frequently results in detail loss and oversaturation, while pairing images in NIR-visible fusion remains complex and error-prone.  This study presents a novel method to address these limitations effectively.  The proposed algorithm leverages CycleGAN to generate synthetic NIR images, blended twice with visible images, to achieve tone-compression effects, substantially minimizing detail loss and oversaturation . This innovative approach enhances image quality while overcoming the inherent drawbacks of traditional methods . The results demonstrate that images generated using our method outperform conventional algorithms in terms of quality. This advancement holds significant potential for applications in various domains, particularly self-driving vehicles and CCTV surveillance systems, where reliable image clarity is paramount.
-1 Project Results and Overview
-Key Objectives
-Facial recognition systems are vital in modern applications, including security, surveillance, and biometric authentication. However, ensuring consistent performance under various environmental factors, especially lighting variations, is a persistent challenge. This project addresses this issue by employing Support Vector Machines (SVM) for robust facial recognition under varying lighting conditions.
+# Enhancing Low-light Images Using CycleGAN and Near-Infrared Dual Blending
 
-Core Purpose
-Developing an SVM-based model capable of robust facial recognition
-Mitigating lighting variability in facial recognition using SVM
-Validating the model’s performance using the Extended Yale B dataset, specifically designed for controlled lighting variability
-Analyzing the model's performance and providing insights into its strengths and limitations in handling lighting variations
-Accuracy
-The model achieved a test accuracy of 99.94%, highlighting the effectiveness of SVM in handling diverse lighting conditions
+## 1. Project Results and Overview
+  The visibility of images is often compromised by low-light conditions, backlighting, and low contrast.  Techniques such as histogram equalization and near-infrared (NIR)-visible fusion are commonly employed to mitigate these challenges . However, histogram equalization frequently results in detail loss and oversaturation, while pairing images in NIR-visible fusion remains complex and error-prone.  This study presents a novel method to address these limitations effectively.  The proposed algorithm leverages CycleGAN to generate synthetic NIR images, blended twice with visible images, to achieve tone-compression effects, substantially minimizing detail loss and oversaturation . This innovative approach enhances image quality while overcoming the inherent drawbacks of traditional methods . The results demonstrate that images generated using our method outperform conventional algorithms in terms of quality. This advancement holds significant potential for applications in various domains, particularly self-driving vehicles and CCTV surveillance systems, where reliable image clarity is paramount.
 
-Performance
-The SVM-based approach demonstrated computational efficiency, making it suitable for small to medium-sized datasets, particularly in controlled environments where preprocessing steps significantly enhance performance. However, due to the extensive nature of the computations involved, particularly with larger datasets, the overall execution time for the model can be quite substantial. This issue is compounded when additional steps for a more detailed analysis are incorporated.
-
-To address this, the code has been divided into two main sections: the primary part handles the core functionality of the model, and a secondary, more detailed analysis section is included to evaluate the extended performance metrics. While the main component processes data efficiently, the additional analysis introduces further computational complexity, resulting in longer processing times. This structure allows for more manageable execution of the model while still providing the necessary in-depth insights into the algorithm’s performance, including accuracy, F1-score, precision, recall, and cross-validation results.
-
-This approach enables a more modular exploration of the results, with the detailed analysis section being run separately when in-depth evaluations are needed, balancing the need for computational efficiency and comprehensive model assessment.
-
-Insights
-Dataset
-This project uses the Extended Yale Face Database B which contains 16128 images of 28 human subjects under 9 poses and 64 illumination conditions
-Impact of Lighting Variations
-Extreme lighting conditions can distort facial features, affecting recognition performance
-Role of Preprocessing
-Steps like resizing and grayscale conversion significantly improved accuracy by standardizing input images and will therefore be performed in this project
-Limitations
-Misclassifications occurred in images with heavy shadows or extreme distortions, indicating a need for advanced preprocessing or data augmentation
-Motivation and Significance
-Facial recognition is central to security systems, biometric authentication, and mobile applications. However, real-world environments present challenges like lighting variability. This project demonstrates how machine learning algorithms, particularly SVM, can address these challenges, contributing to the development of more reliable systems
-2 Source Code
+## 2 Source Code
 Structure of Project
-Facial_Recognition_under_varying_lighting_conditions_using_SVM/
+Enhancing Low-light Images Using CycleGAN and Near-Infrared Dual Blending/
 │
 ├── data/                                     # Contains information and instructions related to the Extended Yale B Dataset
 │   ├── datastructure.txt/                    # Information about the strucure of dataset (content and file order)
