@@ -23,23 +23,19 @@
   * main.py
     * Originally, **`test.py`** should be executed first to perform the necessary pre-processing before running **`main.py`**. However, since all the required settings have already been configured in the **`input`** folder, you can directly run **`main.py`** to check the post-processing results.
 
+#### file and folder explanation :
 * train.py
-- purpose
-generating module for generating fake nir image and fake visible image
-
+    * purpose
+      *generate NIR-image from visible image 
 * test.py
-- purpose
-generate NIR-image from visible image
-
-* main.py
-- purpose
-fusion with fake NIR-image and RGB(visible) image
-
+   * purpose
+      *generate NIR-image from visible image 
 * folders
-- purpose
-input, output : for implementing main.py 
-datasets: for train.py and test.py
-result: for storing images from test.py 
+    * input, output: for implementing main.py
+    * datasets: for train.py and test.py
+    *result: for storing images from test.py 
+      *generate NIR-image from visible image 
+
 
 #### Prerequisites
 
